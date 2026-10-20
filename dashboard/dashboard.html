@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VibeVault Library</title>
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+  <div class="app-layout">
+    <aside class="sidebar">
+      <div class="brand">
+        <h2>VibeVault</h2>
+      </div>
+
+      <nav class="nav-section">
+        <h3>Collections</h3>
+        <ul id="collections-list">
+          <li class="active" data-collection="all"><span>All Items</span> <span class="count" id="count-all">0</span></li>
+          <li data-collection="Design"><span>Design</span> <span class="count" id="count-design">0</span></li>
+          <li data-collection="Dev"><span>Dev</span> <span class="count" id="count-dev">0</span></li>
+          <li data-collection="Articles"><span>Articles</span> <span class="count" id="count-articles">0</span></li>
+          <li data-collection="Music"><span>Music</span> <span class="count" id="count-music">0</span></li>
+          <li data-collection="General"><span>General</span> <span class="count" id="count-general">0</span></li>
+        </ul>
+      </nav>
+
+      <div class="nav-section">
+        <h3>Tags</h3>
+        <div id="tag-cloud" class="tag-cloud"></div>
+      </div>
+
+      <div class="sidebar-footer">
+        <button id="btn-export">Export JSON</button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="top-bar">
+        <div class="search-box">
+          <input type="text" id="search-input" placeholder="Search titles, notes, or tags..." />
+        </div>
+        <div class="stats" id="vault-stats">0 Items</div>
+      </header>
+
+      <section class="content-body">
+        <div class="section-title">
+          <h1 id="current-view-title">All Items</h1>
+        </div>
+
+        <div id="grid-container" class="cards-grid"></div>
+
+        <div id="empty-state" class="empty-state">
+          <h3>No items found</h3>
+          <p>Saved references will appear here once captured via the extension.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>
