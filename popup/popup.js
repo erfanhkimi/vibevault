@@ -1,9 +1,20 @@
 document.addEventListener('DOMContentLoaded', async () => {
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+  let previewImageData = null;
 
   if (tab) {
     document.getElementById('input-title').value = tab.title || '';
     document.getElementById('input-url').value = tab.url || '';
+
+    // Capture visible viewport screen as compressed JPEG
+    try {
+      previewImageData = await chrome.tabs.captureVisibleTab(null, {
+        format: 'jpeg',
+        quality: 50
+      });
+    } catch (e) {
+      console.log('Preview capture unavailable for restricted page');
+    }
   }
 
   document.getElementById('btn-open-dash').addEventListener('click', () => {
@@ -26,6 +37,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       note: note || "No notes provided.",
       collection: collection,
       tags: tags,
+      previewImage: previewImageData,
       dateAdded: new Date().toISOString()
     };
 

@@ -101,7 +101,12 @@ function render() {
     const formattedDate = new Date(item.dateAdded).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
     const tagsHtml = (item.tags || []).map(t => `<span class="badge-tag">#${t}</span>`).join(' ');
 
+    const imageHtml = item.previewImage 
+      ? `<div class="card-preview-container"><img src="${item.previewImage}" class="card-preview-img" alt="Page preview" /></div>` 
+      : '';
+
     card.innerHTML = `
+      ${imageHtml}
       <div class="card-header">
         <a href="${item.url}" target="_blank" class="card-title">${escapeHtml(item.title)}</a>
       </div>

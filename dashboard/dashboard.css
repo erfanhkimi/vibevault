@@ -63,6 +63,17 @@ body { background-color: #0a0a0a; color: #ededed; min-height: 100vh; }
 }
 .vibe-card:hover { border-color: #525252; }
 
+/* Card Image Preview */
+.card-preview-container {
+  width: 100%; height: 150px; overflow: hidden; border-radius: 6px;
+  border: 1px solid #262626; background-color: #000000;
+}
+.card-preview-img {
+  width: 100%; height: 100%; object-fit: cover; object-position: top;
+  display: block; opacity: 0.9; transition: opacity 0.15s, transform 0.2s;
+}
+.vibe-card:hover .card-preview-img { opacity: 1; transform: scale(1.02); }
+
 .card-header { display: flex; justify-content: space-between; align-items: flex-start; }
 .card-title { font-size: 14px; font-weight: 500; color: #ffffff; text-decoration: none; line-height: 1.4; }
 .card-title:hover { text-decoration: underline; }
