@@ -1,71 +1,146 @@
-VibeVault
-Save the vibe. Remember why.
+# VibeVault
 
-VibeVault is a minimalist, local-first Chrome extension for visual context bookmarking. Instead of saving dead links, it lets you capture web references alongside the exact personal notes, quotes, or inspiration behind them.
+> **Save the vibe. Remember why.**
 
-Features
-Quick Capture Popup: Click the extension toolbar icon to grab page titles, URLs, tags, and context notes.
+VibeVault is a minimalist, local-first Chrome extension for visual context bookmarking. It helps you save interesting webpages and highlighted text alongside the personal notes, quotes, and ideas that made them worth keeping.
 
-Right-Click Text Saver: Highlight any text on a webpage, right-click, and instantly save it as a note.
+Instead of collecting links you might never revisit, VibeVault helps you remember **what caught your attention and why it mattered to you**.
 
-Full-Tab Dashboard: View, search, and filter your saved library in a clean, dark-mode workspace (dashboard.html).
+##  Features
 
-Collections & Tags: Group items into categories (Design, Dev, Articles, Music, General) or dynamic tags.
+- **Quick Capture Popup** — Save the current webpage's title and URL, add tags, and record why you want to keep it.
+- **Right-Click Text Saver** — Highlight text on any webpage and save it instantly as a note using the context menu.
+- **Full-Tab Dashboard** — Browse, search, and filter your saved references in a dedicated dark-mode workspace.
+- **Collections & Tags** — Organise saved references into categories such as Design, Dev, Articles, Music, and General, with support for dynamic tags.
+- **Local-First Privacy** — Store your library locally using `chrome.storage.local`, without accounts, external servers, or tracking.
 
-100% Private & Local: Runs entirely on chrome.storage.local. No accounts, servers, or tracking.
+##  Tech Stack
 
-Installation Guide (Local / Developer Mode)
-Since VibeVault runs natively in Chrome without build steps or npm setup, you can load it in under a minute:
+| Technology | Purpose |
+|---|---|
+| HTML5 | Popup and dashboard structure |
+| CSS3 | Responsive layouts and dark-mode styling |
+| JavaScript (ES6+) | Capture logic, search, filtering, and interactions |
+| Chrome Extension Manifest V3 | Extension configuration and permissions |
+| Chrome Storage API | Local data persistence |
+| Chrome Tabs API | Access current tab information |
+| Chrome Context Menus API | Save highlighted text from the right-click menu |
 
-Download or Clone the Project
-Download the source files into a folder named vibevault on your computer.
+**Dependencies:** None. VibeVault uses native browser APIs without requiring npm or a build process.
 
-Open Chrome Extensions Manager
-Open Google Chrome and navigate to:
+##  Project Structure
 
-Plaintext
-chrome://extensions/
-Enable Developer Mode
-Toggle the Developer mode switch in the top-right corner of the extensions page.
-
-Load Unpacked Extension
-
-Click Load unpacked in the top-left menu.
-
-Select your vibevault root directory (the folder containing manifest.json).
-
-Pin VibeVault
-Click Chrome's puzzle piece icon (Extensions) in your browser toolbar and pin VibeVault for quick access.
-
-How to Use
-Save a Page: Click the VibeVault icon in your toolbar on any active tab, type why you saved it, and hit Save Reference.
-
-Save Highlighted Text: Select any text on a website, right-click, and select Save highlighted text to VibeVault note.
-
-Open Your Vault: Click Dashboard → inside the popup (or bookmark chrome-extension://<your-extension-id>/dashboard/dashboard.html).
-
-Project File Structure
-Plaintext
+```text
 vibevault/
-├── manifest.json               # Extension configuration
+├── manifest.json
 ├── background/
-│   └── service-worker.js       # Right-click context menu handler
+│   └── service-worker.js
 ├── popup/
-│   ├── popup.html              # Extension capture interface
-│   ├── popup.css               # Dark mode styles
-│   └── popup.js                # Page scraper & storage logic
+│   ├── popup.html
+│   ├── popup.css
+│   └── popup.js
 └── dashboard/
-    ├── dashboard.html          # Workspace library view
-    ├── dashboard.css           # Workspace grid styles
-    └── dashboard.js            # Real-time search & tag filtering
-Tech Stack
-Manifest Version: Chrome Extension V3
+    ├── dashboard.html
+    ├── dashboard.css
+    └── dashboard.js
+```
 
-Frontend: Plain HTML5, Modern CSS, ES6+ JavaScript
+| File or Directory | Description |
+|---|---|
+| `manifest.json` | Defines the extension configuration, permissions, and entry points |
+| `background/service-worker.js` | Handles the right-click context menu and related events |
+| `popup/` | Contains the quick-capture interface and page-saving logic |
+| `dashboard/` | Contains the saved-reference library, search, and filtering interface |
 
-Chrome APIs: chrome.storage.local, chrome.tabs, chrome.contextMenus
+##  Installation
 
-Dependencies: None
+VibeVault can be installed locally through Chrome's Developer Mode. No build tools or package installation are required.
 
-License
-MIT License. Free for personal and commercial use.
+1. **Download or clone the repository.**
+
+   ```bash
+   git clone <your-repository-url>
+   ```
+
+   Alternatively, download the repository as a ZIP file and extract it.
+
+2. **Open Chrome Extensions.**
+
+   Navigate to:
+
+   ```text
+   chrome://extensions/
+   ```
+
+3. **Enable Developer Mode.**
+
+   Turn on the **Developer mode** toggle in the top-right corner.
+
+4. **Load the extension.**
+
+   Click **Load unpacked** and select the `vibevault/` root directory containing `manifest.json`.
+
+5. **Pin VibeVault.**
+
+   Open Chrome's Extensions menu and pin VibeVault to your toolbar for convenient access.
+
+##  How to Use
+
+### 1. Save a Webpage
+
+1. Open the webpage you want to keep.
+2. Click the VibeVault icon in your Chrome toolbar.
+3. Add your personal context note and any relevant tags.
+4. Click **Save Reference**.
+
+### 2. Save Highlighted Text
+
+1. Highlight a quote, paragraph, or useful piece of information on a webpage.
+2. Right-click the selected text.
+3. Choose **Save highlighted text to VibeVault note**.
+
+### 3. Manage Your Library
+
+1. Open the extension popup.
+2. Click **Dashboard →** to open the full-tab workspace.
+3. Search, filter, and browse your saved references to revisit ideas and information.
+
+##  Privacy & Data Storage
+
+VibeVault is designed around a local-first approach.
+
+- **Local storage:** Saved data is stored using Chrome's `chrome.storage.local` API.
+- **No accounts:** No registration or sign-in is required.
+- **No backend:** The extension does not require a remote server.
+- **No tracking:** No analytics or tracking services are required.
+
+Your saved library is stored in the browser's local extension storage. Removing the extension or clearing its stored data may result in losing your saved references, so export or back up your data if a backup feature is available.
+
+##  Future Improvements
+
+Potential enhancements include:
+
+- Automatic colour palette extraction from saved references.
+- Advanced search across notes, tags, and saved content.
+- Export and import for personal backups.
+- Optional cloud synchronisation across devices.
+- Shareable collections for collaborative inspiration boards.
+
+##  Contributing
+
+Contributions, suggestions, and bug reports are welcome.
+
+1. Fork the repository.
+2. Create a feature branch.
+3. Commit your changes.
+4. Open a pull request describing the improvement.
+
+For larger changes, consider opening an issue first to discuss the proposed feature.
+
+##  License
+
+This project is licensed under the **MIT License**. See the `LICENSE` file for details.
+
+---
+
+*VibeVault — Keep the reference. Keep the reason.*
